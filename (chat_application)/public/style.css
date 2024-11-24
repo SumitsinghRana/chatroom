@@ -1,0 +1,248 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #6a11cb, #2575fc); /* Reverted back to previous gradient */
+    color: #fff;
+}
+
+.app {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    background: #fff;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.app > .screen {
+    display: none;
+}
+
+.app > .screen.active {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.screen .form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+}
+
+.screen .form-input {
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.screen h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #111;
+    border-bottom: 4px solid #555;
+    padding: 5px 0px;
+    display: inline-block;
+}
+
+.screen .form-input label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.screen .form-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    font-size: 16px;
+}
+
+.screen .form-input button {
+    padding: 10px 20px;
+    background: #111;
+    color: #eee;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.chat-screen .header {
+    background: #111;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.chat-screen .header .logo {
+    font-size: 18px;
+    color: #eee;
+    font-weight: 600;
+}
+
+.chat-screen .header button {
+    padding: 5px 18px;
+    border: 1px solid #eee;
+    background: transparent;
+    color: #eee;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.form-input button,
+.chat-screen #send-message,
+.chat-screen #exit-chat {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: none;
+}
+
+.form-input button:hover,
+.chat-screen #send-message:hover,
+.chat-screen #exit-chat:hover {
+    transform: scale(1.05); /* Hover effect: scale up */
+}
+
+.chat-screen #send-message {
+    background: #444; /* Changed Send Button to match Exit Button */
+    color: #fff;
+}
+
+.chat-screen #send-message:hover {
+    background: #333; /* Darker gray on hover */
+}
+
+.chat-screen #exit-chat {
+    background: #444; /* Dark gray for exit button */
+    color: #fff;
+}
+
+.chat-screen #exit-chat:hover {
+    background: #333; /* Darker gray on hover */
+}
+
+.chat-screen .messages .message > div {
+    max-width: 80%;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.chat-screen .messages .message.my-message > div {
+    background: #5b9bf5; /* Lighter blue for my message */
+    color: #fff;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.chat-screen .messages .message.other-message > div {
+    background: #e5e5e5;
+    color: #333;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.chat-screen .messages {
+    width: 100%;
+    height: calc(100% - 100px);
+    background: #f0f0f0; /* Lighter background color for the message area */
+    overflow: auto;
+}
+
+.chat-screen .messages .message {
+    display: flex;
+    padding: 10px;
+}
+
+.chat-screen .messages .message.my-message {
+    justify-content: flex-end;
+}
+
+.chat-screen .messages .message.other-message {
+    justify-content: flex-start;
+}
+
+.chat-screen .messages .message .name {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.chat-screen .messages .message .text {
+    word-wrap: break-word;
+}
+
+.chat-screen .messages .update {
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+    color: #2575fc; /* Changed color to match username's color */
+}
+
+.chat-screen .typebox {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background: #fff; /* White background for the input area */
+    border-radius: 25px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-screen .typebox input {
+    flex: 1;
+    height: 45px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.chat-screen .typebox input:focus {
+    border: 1px solid #2575fc;
+    box-shadow: 0px 0px 8px rgba(37, 117, 252, 0.4);
+}
+
+.chat-screen .typebox button {
+    width: 80px;
+    height: 45px;
+    background: #444; /* Matching Send Button with Exit Button */
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.chat-screen .typebox button:hover {
+    background: #333; /* Darker gray on hover */
+}
